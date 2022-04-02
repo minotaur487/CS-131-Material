@@ -1,0 +1,15 @@
+INFO: LOG FILE FOR SERVER Juzang
+INFO: Juzang received IAMAT kiwi.cs.ucla.edu +34.068930-118.445127 1.6466368997935683e+27 from ('127.0.0.1', 51520)
+INFO: Juzang sent: 'AT Juzang -1.6466368997935686e+27 kiwi.cs.ucla.edu +34.068930-118.445127 1.6466368997935683e+27'
+ERROR: Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<Server.handle_request() done, defined at /w/home.10/class/classrad/cs131/hw6/server.py:165> exception=AttributeError("'Server' object has no attribute 'message_max_length'")>
+Traceback (most recent call last):
+  File "/w/home.10/class/classrad/cs131/hw6/server.py", line 179, in handle_request
+    sendback_message = await self.process_message(message)
+  File "/w/home.10/class/classrad/cs131/hw6/server.py", line 156, in process_message
+    return await self.handle_IAMAT(parsed_message)
+  File "/w/home.10/class/classrad/cs131/hw6/server.py", line 119, in handle_IAMAT
+    await self.propagate_info(response)
+  File "/w/home.10/class/classrad/cs131/hw6/server.py", line 51, in propagate_info
+    response = await reader.read(self.message_max_length)
+AttributeError: 'Server' object has no attribute 'message_max_length'

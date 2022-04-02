@@ -1,0 +1,18 @@
+I did not write make_matcher in terms of make_parser. However, a lot of the ideas
+I used for make_matcher I used in make_parser. This is seen in the logic where for make_parser
+I basically modified make_matcher to return the set of valid rules and then just build a tree
+off of that. Thus, there is code duplication in the sense that the helper functions I used to
+parse out the rules needed for the tree is almost the same as the one's I wrote for make_matcher.
+But it was necessary because if I used make_matcher, I would have to rework new logic to properly use it,
+whereas using most of the same code while modifying it slightly such that it returned the set of valid
+rules was just easier for me development wise.
+
+My solution has a couple weaknesses. For one it is weak if blind alley rules are introduced. Therefore,
+there is a possibility for infinite loops, as my code does not try to calculate a fixed point
+to deal with this issue. For example, in my test cases, if you swapped the rules for Verb and Adverb
+to refer back to VP, it would result in a stack overflow since the loop would never end due to the
+blind alley rule. Another issue is that it only matches the first rule it finds, so if there
+happens to be multiple valid choices, it would give precedence to the first one. For example,
+in my test cases, if you added a new VP that let you use Verb Adverb and placed it at the end of the
+list of rules for VP, it would never be reached by fragments like "El President lived happily" because
+the case where VP is Verb would be matched first and "happily" would be left as a suffix.

@@ -1,0 +1,15 @@
+I spent the first 8 problems by using the information from
+lecture and from the TA's slides that they went over in
+discussion. It was kind of tough since it was my first time
+programming in OCaml. Number 9 was way harder though.
+I struggled to solve this until I began breaking down the
+problem itself and using functions that I had implemented earlier.
+My final solution started with getting the guaranteed terminal
+rules, ie those rules with just terminal symbols. Then I
+iterate repeatedly through the rule set where I check if any of
+them are rules where it consists of symbols that can be found in
+the list of good terminal rules I have. If it does, I add that
+to the list. If it doesn't, I try again the next cycle. This
+continues until a fixed point is found, ie the good rules set
+doesn't update. Using that, I filter the total rule set to
+contain only the good rules while keeping the same order.

@@ -1,0 +1,26 @@
+INFO: LOG FILE FOR SERVER Johnson
+INFO: Johnson received AT Juzang -1.6466368997935686e+27 kiwi.cs.ucla.edu +34.068930-118.445127 1.6466368997935683e+27 from ('127.0.0.1', 37282)
+INFO: Adding new data for client kiwi.cs.ucla.edu and propagating that data.
+ERROR: Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<Server.handle_request() done, defined at /w/home.10/class/classrad/cs131/hw6/server.py:165> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 10156)")>
+Traceback (most recent call last):
+  File "/w/home.10/class/classrad/cs131/hw6/server.py", line 179, in handle_request
+    # Send response
+  File "/w/home.10/class/classrad/cs131/hw6/server.py", line 161, in process_message
+  File "/w/home.10/class/classrad/cs131/hw6/server.py", line 136, in handle_AT
+    self.client_dict[client_name] = (client_time, message)
+  File "/w/home.10/class/classrad/cs131/hw6/server.py", line 46, in propagate_info
+    reader, writer = await asyncio.open_connection(self.ip, utilities.server_ports_dict[port])
+  File "/usr/local/cs/Python-3.10.0/lib/python3.10/asyncio/streams.py", line 47, in open_connection
+    transport, _ = await loop.create_connection(
+  File "/usr/local/cs/Python-3.10.0/lib/python3.10/asyncio/base_events.py", line 1055, in create_connection
+    raise exceptions[0]
+  File "/usr/local/cs/Python-3.10.0/lib/python3.10/asyncio/base_events.py", line 1040, in create_connection
+    sock = await self._connect_sock(
+  File "/usr/local/cs/Python-3.10.0/lib/python3.10/asyncio/base_events.py", line 954, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "/usr/local/cs/Python-3.10.0/lib/python3.10/asyncio/selector_events.py", line 502, in sock_connect
+    return await fut
+  File "/usr/local/cs/Python-3.10.0/lib/python3.10/asyncio/selector_events.py", line 537, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 10156)
